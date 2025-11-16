@@ -115,6 +115,27 @@ Edit `core/config.py` to change:
 - Includes ROI coordinates for cropping
 - Meta images for each class
 
+## Testing
+
+Run tests to verify the implementation:
+
+```bash
+# Install test dependencies
+pip install -r bonus/requirements-test.txt
+
+# Run all tests
+pytest bonus/tests/
+
+# Run with coverage
+pytest bonus/tests/ --cov=bonus/core --cov=bonus/training --cov=bonus/evaluation
+
+# Or use the test runner script
+bash bonus/scripts/run_tests.sh
+# Windows: bonus\scripts\run_tests.bat
+```
+
+See `bonus/tests/README.md` for detailed testing documentation.
+
 ## Results
 
 The ensemble approach combines predictions from all models using weighted voting, typically achieving **>98% accuracy** on the test set.
