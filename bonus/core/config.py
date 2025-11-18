@@ -34,8 +34,8 @@ DEFAULT_CONFIG = {
 
 # Model configurations
 MODEL_CONFIGS = {
-    'lenet': {'lr': 0.001},
-    'resnet18': {'lr': 0.001},
+    # 'lenet': {'lr': 0.001},
+    # 'resnet18': {'lr': 0.001},
     'vgg16': {'lr': 0.001},
     'alexnet': {'lr': 0.001},
     'squeezenet1_0': {'lr': 0.001},

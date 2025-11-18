@@ -1,11 +1,10 @@
 datasets/*
-wandb/
-Bonus/wandb/
-Bonus/checkpoints/*
-Bonus/__pycache__/
-Bonus/nets/__pycache__/
-Bonus/tempCodeRunnerFile.bat
-Bonus/fail/
 *.md
 !README.md
+bonus/.pytest_cache/
+bonus/checkpoints/*
+bonus/core/__pycache__/
+bonus/training/__pycache__/
+bonus/tests/__pycache__/
+bonus/nets/__pycache__/
 .gitconfig

@@ -1,0 +1,31 @@
+# Complete requirements for Bonus Environment
+# This includes all dependencies needed for the bonus deep learning section
+
+# Base dependencies (from project root requirements.txt)
+numpy>=1.23
+scikit-learn>=1.2
+scikit-image>=0.19
+opencv-python>=4.5
+ipykernel>=6.25.0
+pandas>=1.5
+notebook>=6.5.4
+matplotlib>=3.5
+
+# Deep Learning Framework
+# Note: Install PyTorch separately based on your system:
+# CPU: pip install torch torchvision torchaudio
+# CUDA 11.8: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# CUDA 12.1: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+torch>=1.12.0
+torchvision>=0.13.0
+torchaudio>=0.12.0
+
+# Bonus-specific dependencies
+wandb>=0.13.0
+tqdm>=4.64.0
+Pillow>=9.0.0
+
+# Testing dependencies (optional)
+pytest>=7.0.0
+pytest-cov>=4.0.0
+

@@ -204,6 +204,9 @@ def get_model(model_name, num_classes=43, pretrained=True):
     Returns:
         torch.nn.Module: Model instance
     """
+    # Convert pretrained boolean to weights parameter (torchvision 0.13+ API)
+    weights = 'DEFAULT' if pretrained else None
+    
     if model_name == 'lenet':
         model = LeNet(num_classes=num_classes)
         return model
@@ -211,23 +214,23 @@ def get_model(model_name, num_classes=43, pretrained=True):
         model = MY_NET(num_classes=num_classes)
         return model
     elif model_name == 'resnet18':
-        model = models.resnet18(pretrained=pretrained)
+        model = models.resnet18(weights=weights)
         model.fc = nn.Linear(model.fc.in_features, num_classes)
         return model
     elif model_name == 'vgg16':
-        model = models.vgg16(pretrained=pretrained)
+        model = models.vgg16(weights=weights)
         model.classifier[6] = nn.Linear(model.classifier[6].in_features, num_classes)
         return model
     elif model_name == 'alexnet':
-        model = models.alexnet(pretrained=pretrained)
+        model = models.alexnet(weights=weights)
         model.classifier[6] = nn.Linear(model.classifier[6].in_features, num_classes)
         return model
     elif model_name == 'squeezenet1_0':
-        model = models.squeezenet1_0(pretrained=pretrained)
+        model = models.squeezenet1_0(weights=weights)
         model.classifier[1] = nn.Conv2d(512, num_classes, kernel_size=(1, 1), stride=(1, 1))
         return model
     elif model_name == 'vit_b_16':
-        model = models.vit_b_16(pretrained=pretrained)
+        model = models.vit_b_16(weights=weights)
         model.heads.head = nn.Linear(model.heads.head.in_features, num_classes)
         return model
     else:

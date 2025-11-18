@@ -1,0 +1,75 @@
+
+[95m[1m══════════════════════════════════════════════════════════════════════[0m
+[95m[1m                 Traffic Sign Recognition - Training                  [0m
+[95m[1m══════════════════════════════════════════════════════════════════════[0m
+
+[96mℹ Model: [1mVIT_B_16[0m[0m
+[96mℹ Epochs: [1m5[0m[0m
+[96mℹ Learning Rate: [1m0.0001[0m[0m
+[96mℹ Batch Size: [1m128[0m[0m
+[96mℹ Weight Decay: [1m0.001[0m[0m
+[96mℹ Data Augmentation: [1mDisabled[0m[0m
+[96mℹ WandB Logging: [1mDisabled[0m[0m
+[96mℹ Checkpoint directory: /home/paradox/TrafficSignRecongnition/bonus/checkpoints[0m
+[96mℹ Loading datasets...[0m
+[92m✓ Train samples: 39209, Test samples: 12630[0m
+[92m✓ Number of classes: 43[0m
+[96mℹ Initializing vit_b_16 model...[0m
+[92m✓ Device: [1mcuda[0m[0m
+[92m✓ Total parameters: [1m85,831,723[0m[0m
+[92m✓ Trainable parameters: [1m85,831,723[0m[0m
+
+[95m[1m──────────────────────────────────────────────────────────────────────[0m
+[95m[1m                          Starting Training                           [0m
+[95m[1m──────────────────────────────────────────────────────────────────────[0m
+
+
+Epoch 1/5 - Training:   0%|          | 0/307 [00:00<?, ?it/s]
+Epoch 1/5 - Training:   0%|          | 0/307 [00:08<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/paradox/TrafficSignRecongnition/bonus/training/train.py", line 383, in <module>
+    main()
+  File "/home/paradox/TrafficSignRecongnition/bonus/training/train.py", line 303, in main
+    train_loss, train_accuracy = train_epoch(
+  File "/home/paradox/TrafficSignRecongnition/bonus/training/train.py", line 149, in train_epoch
+    outputs = model(images)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torchvision/models/vision_transformer.py", line 298, in forward
+    x = self.encoder(x)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torchvision/models/vision_transformer.py", line 157, in forward
+    return self.ln(self.layers(self.dropout(input)))
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torchvision/models/vision_transformer.py", line 113, in forward
+    x, _ = self.self_attention(x, x, x, need_weights=False)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/modules/activation.py", line 1488, in forward
+    attn_output, attn_output_weights = F.multi_head_attention_forward(
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/functional.py", line 6307, in multi_head_attention_forward
+    q, k, v = _in_projection_packed(query, key, value, in_proj_weight, in_proj_bias)
+  File "/home/paradox/miniconda3/envs/tsr/lib/python3.10/site-packages/torch/nn/functional.py", line 5699, in _in_projection_packed
+    proj = linear(q, w, b)
+torch.AcceleratorError: CUDA error: out of memory
+Search for `cudaErrorMemoryAllocation' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
