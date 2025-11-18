@@ -7,4 +7,5 @@ bonus/core/__pycache__/
 bonus/training/__pycache__/
 bonus/tests/__pycache__/
 bonus/nets/__pycache__/
+bonus/analysis/__pycache__/
 .gitconfig

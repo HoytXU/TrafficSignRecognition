@@ -10,6 +10,7 @@ ipykernel>=6.25.0
 pandas>=1.5
 notebook>=6.5.4
 matplotlib>=3.5
+timm>=0.9.0
 
 # Deep Learning Framework
 # Note: Install PyTorch separately based on your system:
