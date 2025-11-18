@@ -1,16 +1,22 @@
 # Traffic Sign Recognition Project
 
-Final Project for NUS Summer Camp - A comprehensive implementation of traffic sign recognition using classical computer vision and deep learning approaches.
+This is the final Project for NUS Summer Camp, a comprehensive implementation of traffic sign recognition using classical computer vision and deep learning approaches.
 
 ## Quick Links
 
-**Interactive Notebooks** (View online, no setup required)
-- [Expert Concepts Notebook](https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/expert/concepts.ipynb) - Explore classical computer vision concepts with interactive visualizations
-- [Deep Learning Visualization Notebook](https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/bonus/visualization.ipynb) - Visualize how convolutional neural networks process images
+**Jupyter Notebooks** (View online, no setup required)
+- [Vision before Neural Network era](https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/expert/concepts.ipynb) - These are our exploration for classical computer vision concepts, with visualizations
+- [Deep Learning Model Visualization](https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/bonus/visualization.ipynb) - We visualized how convolutional neural networks process images. Also explore ViT's (Vision Transformer) feature extraction process.
 
 **Datasets and Models**
+If you want to replicate the work, you can get the dataset and pretrained checkpoints from here.
 - [Hugging Face Dataset](https://huggingface.co/datasets/IridesParadox/TrafficSignRecognition) - Download Dataset 1 (5,998 images, 58 classes) and Dataset 2 (GTSRB, 43 classes)
-- [Pre-trained Model Checkpoints](https://huggingface.co/IridesParadox/TrafficSignRecognition_checkpoints) - Download trained model weights for all architectures
+
+Put the dataset under `datasets/dataset1` and `datasets/dataset2`.
+
+- [Pre-trained Model Checkpoints](https://huggingface.co/IridesParadox/TrafficSignRecognition_checkpoints) - Trained model weights for all architectures.
+
+Put the checkpoints under `bonus/checkpoints`.
 
 **Documentation**
 - [Presentation Slides](https://github.com/HoytXU/TrafficSignRecongnition/blob/master/assets/slides/talk.pdf) - Project overview, methodology, and results
