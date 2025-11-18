@@ -1,31 +1,14 @@
 {
-  "start_time": "2025-11-17T12:54:30.785336",
-  "end_time": "2025-11-18T08:20:07.441667",
-  "duration_seconds": 69936.656331,
+  "start_time": "2025-11-18T09:18:48.966421",
+  "end_time": "2025-11-18T10:31:03.218978",
+  "duration_seconds": 4334.252557,
   "epochs": 5,
   "batch_size": 128,
   "weight_decay": 0.001,
   "results": {
-    "vgg16": {
-      "status": "success",
-      "log_file": "/home/paradox/TrafficSignRecongnition/bonus/logs/vgg16_training.log"
-    },
-    "alexnet": {
-      "status": "success",
-      "log_file": "/home/paradox/TrafficSignRecongnition/bonus/logs/alexnet_training.log"
-    },
-    "squeezenet1_0": {
-      "status": "success",
-      "log_file": "/home/paradox/TrafficSignRecongnition/bonus/logs/squeezenet1_0_training.log"
-    },
     "vit_b_16": {
-      "status": "failed",
-      "returncode": 1,
-      "log_file": "/home/paradox/TrafficSignRecongnition/bonus/logs/vit_b_16_training.log"
-    },
-    "my_net": {
       "status": "success",
-      "log_file": "/home/paradox/TrafficSignRecongnition/bonus/logs/my_net_training.log"
+      "log_file": "/home/paradox/TrafficSignRecongnition/bonus/logs/vit_b_16_training.log"
     }
   }
 }

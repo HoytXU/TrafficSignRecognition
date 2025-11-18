@@ -36,11 +36,11 @@ DEFAULT_CONFIG = {
 MODEL_CONFIGS = {
     # 'lenet': {'lr': 0.001},
     # 'resnet18': {'lr': 0.001},
-    'vgg16': {'lr': 0.001},
-    'alexnet': {'lr': 0.001},
-    'squeezenet1_0': {'lr': 0.001},
+    # 'vgg16': {'lr': 0.001},
+    # 'alexnet': {'lr': 0.001},
+    # 'squeezenet1_0': {'lr': 0.001},
     'vit_b_16': {'lr': 0.0001},  # Vision Transformer needs lower LR
-    'my_net': {'lr': 0.001},
+    # 'my_net': {'lr': 0.001},
 }
 
 # Ensemble model weights (based on individual model accuracies)

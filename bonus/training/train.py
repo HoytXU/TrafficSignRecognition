@@ -254,17 +254,36 @@ def main():
     train_dataset = GTSRBDataset(folder_path=DATASET_PATH, csv_file=TRAIN_CSV, transform=train_transform)
     test_dataset = GTSRBDataset(folder_path=DATASET_PATH, csv_file=TEST_CSV, transform=test_transform)
     
-    train_dataloader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
-    test_dataloader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False)
+    # ViT models are memory-intensive, use smaller batch size
+    effective_batch_size = args.batch_size
+    if args.model == 'vit_b_16':
+        # ViT needs much smaller batch size due to attention mechanism memory requirements
+        effective_batch_size = min(args.batch_size, 32)
+        if args.batch_size > 32:
+            print_warning(f"ViT model detected. Reducing batch size from {args.batch_size} to {effective_batch_size} to avoid OOM")
+    
+    train_dataloader = DataLoader(train_dataset, batch_size=effective_batch_size, shuffle=True, 
+                                  num_workers=2, pin_memory=True if torch.cuda.is_available() else False)
+    test_dataloader = DataLoader(test_dataset, batch_size=effective_batch_size, shuffle=False,
+                                 num_workers=2, pin_memory=True if torch.cuda.is_available() else False)
     
     print_success(f"Train samples: {len(train_dataset)}, Test samples: {len(test_dataset)}")
     print_success(f"Number of classes: {DEFAULT_CONFIG['num_classes']}")
 
     # Initialize model
     print_info(f"Initializing {args.model} model...")
+    
+    # Clear CUDA cache before loading model
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+    
     model = get_model(args.model, num_classes=DEFAULT_CONFIG['num_classes'], pretrained=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
+    
+    # Clear cache again after model loading
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
     
     # Count parameters
     total_params = sum(p.numel() for p in model.parameters())
@@ -299,6 +318,10 @@ def main():
     for epoch in range(args.epoch):
         epoch_start_time = time.time()
         
+        # Clear CUDA cache at start of each epoch for memory-intensive models
+        if torch.cuda.is_available() and args.model == 'vit_b_16':
+            torch.cuda.empty_cache()
+        
         # Train
         train_loss, train_accuracy = train_epoch(
             model, train_dataloader, criterion, optimizer, device, 
@@ -307,6 +330,10 @@ def main():
 
         # Evaluate
         test_accuracy, f1_macro, predictions, true_labels, cm = evaluate(model, test_dataloader, device)
+        
+        # Clear CUDA cache after evaluation for memory-intensive models
+        if torch.cuda.is_available() and args.model == 'vit_b_16':
+            torch.cuda.empty_cache()
         
         # Calculate epoch time
         epoch_time = time.time() - epoch_start_time
