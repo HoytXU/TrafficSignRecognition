@@ -1,0 +1,51 @@
+{
+  "lenet": {
+    "best_test_acc": 0.8633,
+    "best_test_f1": 0.8151,
+    "best_epoch": 3,
+    "final_train_acc": 0.9533,
+    "final_train_loss": 0.1589
+  },
+  "resnet18": {
+    "best_test_acc": 0.9717,
+    "best_test_f1": 0.9477,
+    "best_epoch": 3,
+    "final_train_acc": 0.9946,
+    "final_train_loss": 0.0325
+  },
+  "vgg16": {
+    "best_test_acc": 0.9616,
+    "best_test_f1": 0.9413,
+    "best_epoch": 4,
+    "final_train_acc": 0.9799,
+    "final_train_loss": 0.0751
+  },
+  "alexnet": {
+    "best_test_acc": 0.9687,
+    "best_test_f1": 0.9545,
+    "best_epoch": 4,
+    "final_train_acc": 0.9848,
+    "final_train_loss": 0.0551
+  },
+  "squeezenet1_0": {
+    "best_test_acc": 0.9601,
+    "best_test_f1": 0.9462,
+    "best_epoch": 5,
+    "final_train_acc": 0.9794,
+    "final_train_loss": 0.0705
+  },
+  "vit_b_16": {
+    "best_test_acc": 0.9804,
+    "best_test_f1": 0.9696,
+    "best_epoch": 4,
+    "final_train_acc": 0.9916,
+    "final_train_loss": 0.04
+  },
+  "my_net": {
+    "best_test_acc": 0.9386,
+    "best_test_f1": 0.9267,
+    "best_epoch": 4,
+    "final_train_acc": 0.9867,
+    "final_train_loss": 0.0702
+  }
+}
