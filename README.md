@@ -2,6 +2,21 @@
 
 Final Project for NUS Summer Camp - A comprehensive implementation of traffic sign recognition using classical computer vision and deep learning approaches.
 
+## Quick Links
+
+**Interactive Notebooks** (View online, no setup required)
+- [Expert Concepts Notebook](https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/expert/concepts.ipynb) - Explore classical computer vision concepts with interactive visualizations
+- [Deep Learning Visualization Notebook](https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/bonus/visualization.ipynb) - Visualize how convolutional neural networks process images
+
+**Datasets and Models**
+- [Hugging Face Dataset](https://huggingface.co/datasets/IridesParadox/TrafficSignRecognition) - Download Dataset 1 (5,998 images, 58 classes) and Dataset 2 (GTSRB, 43 classes)
+- [Pre-trained Model Checkpoints](https://huggingface.co/IridesParadox/TrafficSignRecognition_checkpoints) - Download trained model weights for all architectures
+
+**Documentation**
+- [Presentation Slides](https://github.com/HoytXU/TrafficSignRecongnition/blob/master/assets/slides/talk.pdf) - Project overview, methodology, and results
+
+---
+
 ## Project Overview
 
 This project implements traffic sign recognition through three progressive difficulty levels, demonstrating the evolution from classical computer vision to modern deep learning:
@@ -129,8 +144,10 @@ python beginner/starter.py
 
 ### Run Expert Level
 
-Open the Jupyter notebooks:
+**Interactive Exploration**: 
+- **[View Concepts Notebook Online](https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/expert/concepts.ipynb)** - Explore visualizations and explanations in your browser
 
+**Local Execution**:
 ```bash
 jupyter notebook expert/concepts.ipynb  # Visualizations and explanations
 jupyter notebook expert/task.ipynb     # Implementation
@@ -178,6 +195,8 @@ python bonus/analysis/compare_all_models.py
 - Individual models: 88-99% accuracy
 - Best model (ViT-B/16): ~98.7% accuracy
 
+**Pre-trained Models**: Download trained checkpoints from [Hugging Face](https://huggingface.co/IridesParadox/TrafficSignRecognition_checkpoints)
+
 **See `bonus/README.md` and `bonus/SETUP.md` for detailed documentation.**
 
 ### What You'll Learn
@@ -197,6 +216,7 @@ python bonus/analysis/compare_all_models.py
 - **Classes**: 58 different traffic sign types
 - **Format**: PNG files named `XXX_yyyy.png` where `XXX` is class ID (000-057)
 - **Location**: `datasets/dataset1/`
+- **Download**: Available on [Hugging Face Dataset](https://huggingface.co/datasets/IridesParadox/TrafficSignRecognition)
 
 ### Dataset 2 (Bonus)
 - **Source**: GTSRB (German Traffic Sign Recognition Benchmark)
@@ -204,10 +224,14 @@ python bonus/analysis/compare_all_models.py
 - **Classes**: 43 German traffic sign classes
 - **Features**: Includes ROI (Region of Interest) coordinates for cropping
 - **Location**: `datasets/dataset2/`
+- **Download**: Available on [Hugging Face Dataset](https://huggingface.co/datasets/IridesParadox/TrafficSignRecognition)
 - **Structure**: 
   - `Train.csv` / `Test.csv` with ROI metadata
   - `Meta/` directory with class reference images
   - Organized train/test directories
+
+![Dataset Analysis](bonus/analysis/data_analysis.png)
+*Dataset statistics and class distribution analysis*
 
 ---
 
@@ -245,6 +269,9 @@ python bonus/analysis/compare_all_models.py
 - **Training Time**: 1-2 hours per model (on GPU)
 - **Key Insight**: Deep learning achieves highest accuracy with sufficient data
 
+![Model Comparison](bonus/analysis/model_comparison.png)
+*Performance comparison across all deep learning architectures*
+
 ---
 
 ## Requirements by Level
@@ -280,7 +307,7 @@ See `bonus/requirements-bonus.txt` for complete list.
 1. Review beginner/expert levels for context
 2. Follow `bonus/SETUP.md` for environment setup
 3. Train models and compare performance
-4. Explore `bonus/visualization.ipynb` for model insights
+4. **[Explore Visualization Notebook Online](https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/bonus/visualization.ipynb)** - See how models process images, or run locally: `jupyter notebook bonus/visualization.ipynb`
 
 ---
 
@@ -290,16 +317,41 @@ See `bonus/requirements-bonus.txt` for complete list.
 - **Multiple Approaches**: Classical CV and deep learning
 - **Comprehensive Documentation**: Detailed explanations at each level
 - **Production-Ready Code**: Well-structured, tested, and documented
-- **Visualizations**: Jupyter notebooks for understanding concepts
+- **Interactive Visualizations**: [Explore notebooks online](https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/expert/concepts.ipynb) without local setup
+- **Pre-trained Models**: Download ready-to-use checkpoints from [Hugging Face](https://huggingface.co/IridesParadox/TrafficSignRecognition_checkpoints)
 - **Experiment Tracking**: WandB integration for bonus level
 
 ---
 
 ## Additional Resources
 
-- **Presentation**: See `assets/slides/talk.pdf` for project overview
-- **Project PDF**: See `TrafficSignProject.pdf` for detailed specifications
-- **WandB Dashboard**: [View training metrics](https://wandb.ai/irides_paradox/Traffic%20Sign%20Recongnition) (for bonus level)
+### Interactive Explorations
+
+- [Expert Concepts Notebook](https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/expert/concepts.ipynb): Explore classical computer vision concepts with interactive visualizations
+  - Feature extraction methods (HOG, LBP, FFT, Feature Pyramid)
+  - Classifier mechanisms and decision boundaries
+  - PCA dimensionality reduction visualization
+  
+- [Deep Learning Visualization Notebook](https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/bonus/visualization.ipynb): Visualize how deep learning models process images
+  - Feature map visualizations
+  - Grad-CAM attention maps
+  - Vision Transformer attention patterns
+
+### Datasets and Models
+
+- [Hugging Face Dataset](https://huggingface.co/datasets/IridesParadox/TrafficSignRecognition): Download the datasets used in this project
+  - Dataset 1: 5,998 images, 58 classes (for beginner/expert levels)
+  - Dataset 2: GTSRB dataset, 43 classes (for bonus level)
+
+- [Hugging Face Model Checkpoints](https://huggingface.co/IridesParadox/TrafficSignRecognition_checkpoints): Download trained model weights
+  - Pre-trained models for all architectures
+  - Ready to use for inference or fine-tuning
+
+### Documentation
+
+- [Presentation Slides](https://github.com/HoytXU/TrafficSignRecongnition/blob/master/assets/slides/talk.pdf): Project overview and results
+- Project PDF: See `TrafficSignProject.pdf` for detailed specifications
+- [WandB Dashboard](https://wandb.ai/irides_paradox/Traffic%20Sign%20Recongnition): View training metrics and experiment tracking (for bonus level)
 
 ---
 
@@ -360,5 +412,5 @@ This project is part of the NUS Summer Camp final project.
 4. **Compare Results**: Understand trade-offs between approaches
 5. **Experiment**: Modify parameters and see how performance changes
 
-**Happy Learning! 🚦**
+**Happy Learning!**
 
