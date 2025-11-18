@@ -76,7 +76,6 @@ fi
 echo -e "${YELLOW}Creating required directories...${NC}"
 mkdir -p "$BONUS_DIR/checkpoints"
 mkdir -p "$BONUS_DIR/logs"
-mkdir -p "$BONUS_DIR/fail_example"
 echo -e "${GREEN}Directories created!${NC}"
 
 # Verify installation

@@ -33,7 +33,6 @@ if [ "$1" == "--coverage" ] || [ "$1" == "-c" ]; then
     pytest "$BONUS_DIR/tests/" \
         --cov="$BONUS_DIR/core" \
         --cov="$BONUS_DIR/training" \
-        --cov="$BONUS_DIR/evaluation" \
         --cov-report=html \
         --cov-report=term-missing
     echo ""

@@ -12,7 +12,7 @@ sys.path.insert(0, bonus_dir)
 
 from core.config import (
     DATASET_PATH, TRAIN_CSV, TEST_CSV, META_PATH,
-    CHECKPOINT_DIR, LOGS_DIR, FAIL_EXAMPLES_DIR,
+    CHECKPOINT_DIR, LOGS_DIR,
     DEFAULT_CONFIG, MODEL_CONFIGS, ENSEMBLE_WEIGHTS, AVAILABLE_MODELS
 )
 
@@ -28,7 +28,6 @@ class TestConfig:
         assert isinstance(META_PATH, str)
         assert isinstance(CHECKPOINT_DIR, str)
         assert isinstance(LOGS_DIR, str)
-        assert isinstance(FAIL_EXAMPLES_DIR, str)
     
     def test_default_config(self):
         """Test default configuration values."""

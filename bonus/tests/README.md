@@ -41,7 +41,7 @@ pytest bonus/tests/test_models.py
 ### Run with Coverage
 
 ```bash
-pytest bonus/tests/ --cov=bonus/core --cov=bonus/training --cov=bonus/evaluation --cov-report=html
+pytest bonus/tests/ --cov=bonus/core --cov=bonus/training --cov-report=html
 ```
 
 ### Run Verbose Output

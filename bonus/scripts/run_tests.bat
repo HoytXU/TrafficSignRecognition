@@ -30,7 +30,7 @@ if "%1"=="--coverage" (
     echo ==========================================
     echo Running Tests with Coverage
     echo ==========================================
-    pytest "%BONUS_DIR%\tests\" --cov="%BONUS_DIR%\core" --cov="%BONUS_DIR%\training" --cov="%BONUS_DIR%\evaluation" --cov-report=html --cov-report=term-missing
+    pytest "%BONUS_DIR%\tests\" --cov="%BONUS_DIR%\core" --cov="%BONUS_DIR%\training" --cov-report=html --cov-report=term-missing
     echo.
     echo Coverage report generated in htmlcov/
 )

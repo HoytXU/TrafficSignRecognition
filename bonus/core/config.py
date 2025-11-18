@@ -20,7 +20,6 @@ META_PATH = os.path.join(DATASET_PATH, "Meta")
 # Model checkpoint paths
 CHECKPOINT_DIR = os.path.join(bonus_directory, "checkpoints")
 LOGS_DIR = os.path.join(bonus_directory, "logs")
-FAIL_EXAMPLES_DIR = os.path.join(bonus_directory, "fail_example")
 
 # Default hyperparameters
 DEFAULT_CONFIG = {

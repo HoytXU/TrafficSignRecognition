@@ -2,7 +2,7 @@ datasets/*
 *.md
 !README.md
 bonus/.pytest_cache/
-bonus/checkpoints/*
+bonus/checkpoints/
 bonus/core/__pycache__/
 bonus/training/__pycache__/
 bonus/tests/__pycache__/
