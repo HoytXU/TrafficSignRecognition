@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { galleryItems, type GalleryItem } from '../data/projectData'
+import { galleryItems, getGtsrbClassLabel, type GalleryItem } from '../data/projectData'
 
 function Modal({ item, onClose }: { item: GalleryItem; onClose: () => void }) {
   const base = import.meta.env.BASE_URL
@@ -13,7 +13,7 @@ function Modal({ item, onClose }: { item: GalleryItem; onClose: () => void }) {
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center justify-between mb-3">
-          <strong className="text-sm">Class {item.classId} — GTSRB</strong>
+          <strong className="text-sm">Class {item.classId}: {item.trueLabel}</strong>
           <button onClick={onClose} className="text-gray-400 hover:text-black text-lg leading-none">×</button>
         </div>
 
@@ -24,23 +24,24 @@ function Modal({ item, onClose }: { item: GalleryItem; onClose: () => void }) {
         />
 
         <p className="text-xs text-gray-500 italic mb-3">
-          Note: predictions below are hardcoded placeholder values. No model inference was run.
+          Note: this is a GTSRB Meta reference image. The fields below show a planned prediction UI format;
+          no model inference was run for this static page.
         </p>
 
         <table className="tbl mb-3">
           <thead><tr><th>Field</th><th>Value</th></tr></thead>
           <tbody>
             <tr><td>True label</td><td>{item.trueLabel}</td></tr>
-            <tr><td>Predicted</td><td>{item.predictedLabel}</td></tr>
-            <tr><td>Confidence</td><td className="tabular-nums">{(item.confidence * 100).toFixed(1)}%</td></tr>
+            <tr><td>Planned predicted label</td><td>{item.predictedLabel}</td></tr>
+            <tr><td>Planned confidence</td><td className="tabular-nums text-gray-500">{(item.confidence * 100).toFixed(1)}%</td></tr>
           </tbody>
         </table>
 
-        <p className="text-xs font-bold mb-1">Top-5 predictions:</p>
-        <ol className="text-xs list-decimal list-inside text-gray-700 space-y-0.5">
+        <p className="text-xs font-bold mb-1 text-gray-600">Planned top-5 UI format:</p>
+        <ol className="text-xs list-decimal list-inside text-gray-500 space-y-0.5">
           {item.topFive.map((t, i) => (
             <li key={i}>
-              Class {t.classId}: {(t.prob * 100).toFixed(1)}%
+              Class {t.classId}: {getGtsrbClassLabel(t.classId)} ({(t.prob * 100).toFixed(1)}%)
             </li>
           ))}
         </ol>
@@ -59,16 +60,15 @@ export default function ExampleGallery() {
   return (
     <section id="gallery">
       <hr className="sec" />
-      <h2 className="text-lg font-bold mb-4">4. Example Gallery</h2>
+      <h2 className="text-lg font-bold mb-4">4. Class Reference Gallery</h2>
 
       <p className="text-sm leading-relaxed mb-2">
-        The grid below shows the GTSRB class reference image for each of the 43 classes (from the
-        dataset's <code>Meta/</code> directory). Click any image to view predicted class, confidence,
-        and top-5 predictions. <em>All predictions shown are placeholder values</em> — the trained
-        models were not deployed for this static page.
+        The grid below shows one GTSRB Meta reference image for each of the 43 classes. These are
+        class reference images, not test samples and not model predictions. Click any image to inspect
+        the human-readable class label and the planned prediction UI format.
       </p>
       <p className="text-xs text-gray-500 italic mb-4">
-        Figure 4. GTSRB class reference images (classes 0–42). Click to inspect.
+        Figure 4. GTSRB Meta class reference images (classes 0–42). Click to inspect.
       </p>
 
       <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 gap-1.5 mb-3">
@@ -77,11 +77,11 @@ export default function ExampleGallery() {
             key={item.id}
             onClick={() => setSelected(item)}
             className="group relative aspect-square border border-gray-300 hover:border-gray-600 bg-gray-100 overflow-hidden"
-            title={`Class ${item.classId}`}
+            title={`Class ${item.classId}: ${item.trueLabel}`}
           >
             <img
               src={`${base}${item.imagePath}`}
-              alt={`Class ${item.classId}`}
+              alt={`GTSRB class ${item.classId}: ${item.trueLabel}`}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-white/70 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">

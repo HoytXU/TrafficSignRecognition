@@ -5,8 +5,8 @@ This is the final Project for NUS Summer Camp, a comprehensive implementation of
 ## Quick Links
 
 **Jupyter Notebooks** (View online, no setup required)
-- [Vision before Neural Network era](https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/expert/concepts.ipynb) - These are our exploration for classical computer vision concepts, with visualizations
-- [Deep Learning Model Visualization](https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/bonus/visualization.ipynb) - We visualized how convolutional neural networks process images. Also explore ViT's (Vision Transformer) feature extraction process.
+- [Vision before Neural Network era](https://nbviewer.org/github/HoytXU/TrafficSignRecognition/blob/master/expert/concepts.ipynb) - These are our exploration for classical computer vision concepts, with visualizations
+- [Deep Learning Model Visualization](https://nbviewer.org/github/HoytXU/TrafficSignRecognition/blob/master/bonus/visualization.ipynb) - We visualized how convolutional neural networks process images. Also explore ViT's (Vision Transformer) feature extraction process.
 
 **Datasets and Models**
 If you want to replicate the work, you can get the dataset and pretrained checkpoints from here.
@@ -19,7 +19,7 @@ Put the dataset under `datasets/dataset1` and `datasets/dataset2`.
 Put the checkpoints under `bonus/checkpoints`.
 
 **Documentation**
-- [Presentation Slides](https://github.com/HoytXU/TrafficSignRecongnition/blob/master/assets/slides/talk.pdf) - Project overview, methodology, and results
+- [Presentation Slides](https://github.com/HoytXU/TrafficSignRecognition/blob/master/assets/slides/talk.pdf) - Project overview, methodology, and results
 
 ---
 
@@ -34,7 +34,7 @@ This project implements traffic sign recognition through three progressive diffi
 ## Project Structure
 
 ```
-TrafficSignRecongnition/
+TrafficSignRecognition/
 ├── beginner/              # Beginner level: HOG + SVM
 │   ├── starter.py         # Complete implementation script
 │   └── details.md         # Detailed explanation of concepts
@@ -67,7 +67,7 @@ TrafficSignRecongnition/
 **Prerequisites**: Python 3.8+, pip/conda
 
 ```bash
-git clone <repository-url> && cd TrafficSignRecongnition
+git clone <repository-url> && cd TrafficSignRecognition
 pip install -r requirements.txt
 pip install torch torchvision torchaudio wandb tqdm Pillow  # For bonus level
 ```

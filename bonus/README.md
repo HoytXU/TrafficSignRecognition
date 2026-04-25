@@ -255,7 +255,7 @@ jupyter notebook bonus/visualization.ipynb
 **Import Errors:**
 ```bash
 # Make sure you're in the project root
-cd /home/paradox/TrafficSignRecongnition
+cd /home/paradox/TrafficSignRecognition
 export PYTHONPATH="${PYTHONPATH}:$(pwd)/bonus"
 ```
 

@@ -22,14 +22,14 @@ export default function FailureCases() {
           <div key={i} className="flex gap-4 border border-gray-300 p-3">
             <img
               src={`${base}${fc.imagePath}`}
-              alt="Input image"
+              alt={`GTSRB reference for ${fc.trueLabel}`}
               className="w-16 h-16 object-cover border border-gray-300 bg-gray-100 shrink-0"
             />
             <div className="text-sm">
               <p className="mb-1">
                 <span className="text-gray-500">Predicted: </span>
                 <strong className="text-red-700">{fc.predictedLabel}</strong>
-                <span className="text-gray-400 text-xs ml-1">({(fc.confidence * 100).toFixed(0)}%)</span>
+                <span className="text-gray-400 text-xs ml-1">confidence {(fc.confidence * 100).toFixed(0)}%</span>
               </p>
               <p className="mb-1">
                 <span className="text-gray-500">True label: </span>

@@ -11,7 +11,7 @@ npm run copy-assets   # copies images from datasets/ and bonus/analysis/ into pu
 npm run dev
 ```
 
-The dev server starts at `http://localhost:5173/TrafficSignRecongnition/` (base path applied).
+The dev server starts at `http://localhost:5173/TrafficSignRecognition/` (base path applied).
 
 > **Note:** `npm run copy-assets` must be run at least once before `dev` or `build`. It copies:
 > - `datasets/dataset2/Meta/0.png … 42.png` → `public/images/meta/`
@@ -32,11 +32,11 @@ Output goes to `../docs/`. GitHub Pages is configured to serve from the `docs/` 
 1. Go to **Settings → Pages** in your GitHub repository.
 2. Under **Source**, choose **Deploy from a branch**.
 3. Select branch `master`, folder `/docs`.
-4. Save. The site will be live at `https://HoytXU.github.io/TrafficSignRecongnition/`.
+4. Save. The site will be live at `https://HoytXU.github.io/TrafficSignRecognition/`.
 
 ### Verify the base path
 
-`vite.config.ts` sets `base: '/TrafficSignRecongnition/'`. This must exactly match your GitHub repository name (including any capitalisation). If your repo name differs, update the `base` field and the `--base` flag in the `preview` script in `package.json`.
+`vite.config.ts` sets `base: '/TrafficSignRecognition/'`. This must exactly match your GitHub repository name (including any capitalisation). If your repo name differs, update the `base` field and the `--base` flag in the `preview` script in `package.json`.
 
 ## What is static vs what needs a backend
 
@@ -46,8 +46,8 @@ Output goes to `../docs/`. GitHub Pages is configured to serve from the `docs/` 
 | Method Pipeline Explorer (tabs) | Static — hardcoded pipeline steps |
 | Model Comparison table (sort/filter) | Static — real metrics from `model_comparison_summary.json` |
 | Model Comparison charts | Static — PNG images from `bonus/analysis/` |
-| Example Gallery images | Static — GTSRB Meta/ reference images |
-| Example Gallery predictions | **Placeholder** — hardcoded in `src/data/projectData.ts` |
+| Class Reference Gallery images | Static — GTSRB Meta/ reference images |
+| Planned prediction UI format | **Placeholder** — hardcoded in `src/data/projectData.ts` |
 | Failure Cases | **Placeholder** — illustrative examples only |
 | Links | Static — external URLs |
 

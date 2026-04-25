@@ -76,6 +76,56 @@ export interface LinkGroup {
   items: LinkItem[];
 }
 
+export const GTSRB_CLASS_LABELS = [
+  'Speed limit (20 km/h)',
+  'Speed limit (30 km/h)',
+  'Speed limit (50 km/h)',
+  'Speed limit (60 km/h)',
+  'Speed limit (70 km/h)',
+  'Speed limit (80 km/h)',
+  'End of speed limit (80 km/h)',
+  'Speed limit (100 km/h)',
+  'Speed limit (120 km/h)',
+  'No passing',
+  'No passing for vehicles over 3.5 tons',
+  'Right-of-way at next intersection',
+  'Priority road',
+  'Yield',
+  'Stop',
+  'No vehicles',
+  'Vehicles over 3.5 tons prohibited',
+  'No entry',
+  'General caution',
+  'Dangerous curve to the left',
+  'Dangerous curve to the right',
+  'Double curve',
+  'Bumpy road',
+  'Slippery road',
+  'Road narrows on the right',
+  'Road work',
+  'Traffic signals',
+  'Pedestrians',
+  'Children crossing',
+  'Bicycles crossing',
+  'Beware of ice/snow',
+  'Wild animals crossing',
+  'End of all speed and passing limits',
+  'Turn right ahead',
+  'Turn left ahead',
+  'Ahead only',
+  'Go straight or right',
+  'Go straight or left',
+  'Keep right',
+  'Keep left',
+  'Roundabout mandatory',
+  'End of no passing',
+  'End of no passing for vehicles over 3.5 tons',
+] as const;
+
+export function getGtsrbClassLabel(classId: number) {
+  return GTSRB_CLASS_LABELS[classId] ?? `Class ${classId}`;
+}
+
 // ─── Deep Learning Models (REAL metrics from bonus/analysis/model_comparison_summary.json) ──
 
 export const dlModels: DLModel[] = [
@@ -282,7 +332,7 @@ export const pipelineMethods: PipelineMethod[] = [
   },
 ];
 
-// ─── Example Gallery (PLACEHOLDER predictions — class reference images only) ──
+// ─── Class Reference Gallery (GTSRB Meta images; prediction UI is placeholder) ──
 // Images must be copied to public/images/meta/ before build.
 // Run: npm run copy-assets
 
@@ -301,8 +351,8 @@ export const galleryItems: GalleryItem[] = Array.from({ length: 43 }, (_, i) => 
     id: i,
     imagePath: `images/meta/${i}.png`,
     classId: i,
-    trueLabel: `Class ${i}`,
-    predictedLabel: `Class ${i}`,
+    trueLabel: getGtsrbClassLabel(i),
+    predictedLabel: getGtsrbClassLabel(i),
     confidence: c,
     topFive: [
       { classId: i,            prob: c },
@@ -320,42 +370,42 @@ export const galleryItems: GalleryItem[] = Array.from({ length: 43 }, (_, i) => 
 export const failureCases: FailureCase[] = [
   {
     imagePath: 'images/meta/1.png',
-    trueLabel: 'Class 1',
-    predictedLabel: 'Class 2',
+    trueLabel: getGtsrbClassLabel(1),
+    predictedLabel: getGtsrbClassLabel(2),
     confidence: 0.51,
     reason: 'Adjacent speed-limit signs share identical circular shape; only the digit differs. Blurry or low-res input makes the digit ambiguous.',
     isPlaceholder: true,
   },
   {
     imagePath: 'images/meta/11.png',
-    trueLabel: 'Class 11',
-    predictedLabel: 'Class 30',
+    trueLabel: getGtsrbClassLabel(11),
+    predictedLabel: getGtsrbClassLabel(30),
     confidence: 0.43,
     reason: 'Triangular warning signs share the same red-border structure. Occlusion of the inner pictogram causes the model to fall back on shape alone.',
     isPlaceholder: true,
   },
   {
     imagePath: 'images/meta/27.png',
-    trueLabel: 'Class 27',
-    predictedLabel: 'Class 18',
+    trueLabel: getGtsrbClassLabel(27),
+    predictedLabel: getGtsrbClassLabel(18),
     confidence: 0.48,
     reason: 'Pedestrian and general-warning triangular signs look nearly identical at a glance. Viewpoint change distorts the inner figure.',
     isPlaceholder: true,
   },
   {
     imagePath: 'images/meta/40.png',
-    trueLabel: 'Class 40',
-    predictedLabel: 'Class 12',
+    trueLabel: getGtsrbClassLabel(40),
+    predictedLabel: getGtsrbClassLabel(12),
     confidence: 0.39,
-    reason: 'Class 40 (roundabout) is one of the rarest in GTSRB. Under-representation leads to poor recall; the circular shape matches class 12.',
+    reason: 'Roundabout mandatory is one of the rarest GTSRB classes. Under-representation leads to poor recall; the circular shape can resemble Priority road.',
     isPlaceholder: true,
   },
   {
     imagePath: 'images/meta/37.png',
-    trueLabel: 'Class 37',
-    predictedLabel: 'Class 36',
+    trueLabel: getGtsrbClassLabel(37),
+    predictedLabel: getGtsrbClassLabel(36),
     confidence: 0.55,
-    reason: 'Go-straight-or-right (class 36) and go-straight-or-left (class 37) are mirror images. Extreme lighting flattens the directional arrow.',
+    reason: 'Go straight or right and Go straight or left are mirror images. Extreme lighting flattens the directional arrow.',
     isPlaceholder: true,
   },
 ];
@@ -417,12 +467,12 @@ export const projectLinks: LinkGroup[] = [
     items: [
       {
         label: 'Classical CV Concepts',
-        url: 'https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/expert/concepts.ipynb',
+        url: 'https://nbviewer.org/github/HoytXU/TrafficSignRecognition/blob/master/expert/concepts.ipynb',
         desc: 'Feature extraction visualisations: HOG, LBP, Pyramid, FFT, Hu Moments, PCA, and 6 classifiers.',
       },
       {
         label: 'Deep Learning Visualisation',
-        url: 'https://nbviewer.org/github/HoytXU/TrafficSignRecongnition/blob/master/bonus/visualization.ipynb',
+        url: 'https://nbviewer.org/github/HoytXU/TrafficSignRecognition/blob/master/bonus/visualization.ipynb',
         desc: 'CNN feature maps (layer by layer), Grad-CAM saliency, and ViT attention maps.',
       },
     ],
@@ -432,7 +482,7 @@ export const projectLinks: LinkGroup[] = [
     items: [
       {
         label: 'GitHub Repository',
-        url: 'https://github.com/HoytXU/TrafficSignRecongnition',
+        url: 'https://github.com/HoytXU/TrafficSignRecognition',
         desc: 'Full source code, notebooks, training scripts, and documentation.',
       },
       {
@@ -452,7 +502,7 @@ export const projectLinks: LinkGroup[] = [
     items: [
       {
         label: 'Presentation Slides',
-        url: 'https://github.com/HoytXU/TrafficSignRecongnition/blob/master/assets/slides/talk.pdf',
+        url: 'https://github.com/HoytXU/TrafficSignRecognition/blob/master/assets/slides/talk.pdf',
         desc: 'Project overview, methodology, and results — INFH 5000 final presentation.',
       },
     ],
