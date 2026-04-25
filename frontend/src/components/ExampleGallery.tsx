@@ -5,69 +5,45 @@ function Modal({ item, onClose }: { item: GalleryItem; onClose: () => void }) {
   const base = import.meta.env.BASE_URL
   return (
     <div
-      className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
       onClick={onClose}
     >
       <div
-        className="bg-slate-800 rounded-xl border border-slate-700 max-w-sm w-full p-5"
+        className="bg-white border border-gray-400 max-w-sm w-full p-5"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-white">Class {item.classId} — GTSRB</h3>
-          <button onClick={onClose} className="text-slate-400 hover:text-white text-lg leading-none">×</button>
+        <div className="flex items-center justify-between mb-3">
+          <strong className="text-sm">Class {item.classId} — GTSRB</strong>
+          <button onClick={onClose} className="text-gray-400 hover:text-black text-lg leading-none">×</button>
         </div>
 
         <img
           src={`${base}${item.imagePath}`}
-          alt={`GTSRB class ${item.classId} reference`}
-          className="w-full rounded-lg mb-4 bg-slate-700"
+          alt={`GTSRB class ${item.classId} reference image`}
+          className="w-full border border-gray-300 mb-3 bg-gray-100"
         />
 
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-xs px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">
-            Placeholder predictions
-          </span>
-          <span className="text-xs text-slate-500">No inference was run</span>
-        </div>
-
-        <div className="space-y-2 text-sm">
-          <div className="flex justify-between">
-            <span className="text-slate-400">True label</span>
-            <span className="text-emerald-400">{item.trueLabel}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-slate-400">Predicted</span>
-            <span className="text-blue-300">{item.predictedLabel}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="text-slate-400">Confidence</span>
-            <span className="text-slate-200">{(item.confidence * 100).toFixed(1)}%</span>
-          </div>
-        </div>
-
-        <div className="mt-4">
-          <div className="text-xs text-slate-500 mb-2">Top-5 predictions</div>
-          <div className="space-y-1">
-            {item.topFive.map((t, i) => (
-              <div key={i} className="flex items-center gap-2">
-                <span className="text-xs text-slate-500 w-4">{i + 1}.</span>
-                <div className="flex-1 bg-slate-700 rounded-full h-1.5">
-                  <div
-                    className={`h-1.5 rounded-full ${i === 0 ? 'bg-blue-500' : 'bg-slate-500'}`}
-                    style={{ width: `${(t.prob * 100).toFixed(1)}%` }}
-                  />
-                </div>
-                <span className="text-xs text-slate-400 w-16 text-right">
-                  Class {t.classId} {(t.prob * 100).toFixed(1)}%
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <p className="mt-4 text-xs text-slate-600 leading-relaxed">
-          These are the GTSRB class reference images. Displayed predictions are hardcoded placeholder values — connect a model backend to show real inference results.
+        <p className="text-xs text-gray-500 italic mb-3">
+          Note: predictions below are hardcoded placeholder values. No model inference was run.
         </p>
+
+        <table className="tbl mb-3">
+          <thead><tr><th>Field</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>True label</td><td>{item.trueLabel}</td></tr>
+            <tr><td>Predicted</td><td>{item.predictedLabel}</td></tr>
+            <tr><td>Confidence</td><td className="tabular-nums">{(item.confidence * 100).toFixed(1)}%</td></tr>
+          </tbody>
+        </table>
+
+        <p className="text-xs font-bold mb-1">Top-5 predictions:</p>
+        <ol className="text-xs list-decimal list-inside text-gray-700 space-y-0.5">
+          {item.topFive.map((t, i) => (
+            <li key={i}>
+              Class {t.classId}: {(t.prob * 100).toFixed(1)}%
+            </li>
+          ))}
+        </ol>
       </div>
     </div>
   )
@@ -81,55 +57,50 @@ export default function ExampleGallery() {
   const displayed = showAll ? galleryItems : galleryItems.slice(0, 12)
 
   return (
-    <section id="gallery" className="py-20 px-4 border-t border-slate-800">
-      <div className="max-w-5xl mx-auto">
-        <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Example Gallery</h2>
-            <p className="text-slate-500 text-sm mt-1">
-              GTSRB class reference images (classes 0–42). Click any image to inspect.
-            </p>
-          </div>
-          <span className="text-xs px-2 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 self-start mt-1">
-            Placeholder predictions
-          </span>
-        </div>
+    <section id="gallery">
+      <hr className="sec" />
+      <h2 className="text-lg font-bold mb-4">4. Example Gallery</h2>
 
-        <p className="text-xs text-slate-600 mb-8">
-          These are the per-class reference images from the GTSRB Meta/ directory. Confidence scores and top-5 predictions shown in the modal are hardcoded placeholders — no model inference was run.
-        </p>
+      <p className="text-sm leading-relaxed mb-2">
+        The grid below shows the GTSRB class reference image for each of the 43 classes (from the
+        dataset's <code>Meta/</code> directory). Click any image to view predicted class, confidence,
+        and top-5 predictions. <em>All predictions shown are placeholder values</em> — the trained
+        models were not deployed for this static page.
+      </p>
+      <p className="text-xs text-gray-500 italic mb-4">
+        Figure 4. GTSRB class reference images (classes 0–42). Click to inspect.
+      </p>
 
-        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-2 mb-6">
-          {displayed.map(item => (
-            <button
-              key={item.id}
-              onClick={() => setSelected(item)}
-              className="group relative aspect-square rounded-lg overflow-hidden border border-slate-700 hover:border-blue-500 transition-colors bg-slate-800"
-              title={`Class ${item.classId}`}
-            >
-              <img
-                src={`${base}${item.imagePath}`}
-                alt={`Class ${item.classId}`}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <span className="text-xs text-white font-medium">{item.classId}</span>
-              </div>
-            </button>
-          ))}
-        </div>
-
-        {!showAll && (
+      <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 gap-1.5 mb-3">
+        {displayed.map(item => (
           <button
-            onClick={() => setShowAll(true)}
-            className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
+            key={item.id}
+            onClick={() => setSelected(item)}
+            className="group relative aspect-square border border-gray-300 hover:border-gray-600 bg-gray-100 overflow-hidden"
+            title={`Class ${item.classId}`}
           >
-            Show all 43 classes ↓
+            <img
+              src={`${base}${item.imagePath}`}
+              alt={`Class ${item.classId}`}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-white/70 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+              <span className="text-xs font-bold text-black">{item.classId}</span>
+            </div>
           </button>
-        )}
-
-        {selected && <Modal item={selected} onClose={() => setSelected(null)} />}
+        ))}
       </div>
+
+      {!showAll && (
+        <p className="text-sm mb-4">
+          Showing 12 of 43.{' '}
+          <button onClick={() => setShowAll(true)} className="text-blue-700 underline cursor-pointer">
+            Show all 43 classes.
+          </button>
+        </p>
+      )}
+
+      {selected && <Modal item={selected} onClose={() => setSelected(null)} />}
     </section>
   )
 }

@@ -2,18 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background: #ffffff;
+  color: #111111;
 }
 
-/* Thin scrollbar for pipeline overflow on mobile */
-.pipeline-scroll::-webkit-scrollbar {
-  height: 4px;
-}
-.pipeline-scroll::-webkit-scrollbar-track {
-  background: #1e293b;
-}
-.pipeline-scroll::-webkit-scrollbar-thumb {
-  background: #475569;
-  border-radius: 2px;
-}
+a { color: #0000cc; }
+a:hover { color: #0033ff; text-decoration: underline; }
+
+/* Academic two-rule table (like LaTeX booktabs) */
+.tbl { border-collapse: collapse; width: 100%; font-size: 0.875rem; }
+.tbl th { font-weight: bold; text-align: left; padding: 0.3rem 0.7rem; white-space: nowrap; cursor: pointer; user-select: none; }
+.tbl td { padding: 0.3rem 0.7rem; vertical-align: middle; }
+.tbl thead { border-top: 2px solid #111; border-bottom: 1px solid #111; }
+.tbl tfoot td, .tbl tbody tr:last-child { border-bottom: 1.5px solid #111; }
+.tbl tbody tr:hover { background: #f9f9f9; }
+
+/* Scrollable pipeline on narrow viewports */
+.pipeline-scroll::-webkit-scrollbar { height: 3px; }
+.pipeline-scroll::-webkit-scrollbar-track { background: #f0f0f0; }
+.pipeline-scroll::-webkit-scrollbar-thumb { background: #bbb; }
+
+/* Section rules */
+hr.sec { border: none; border-top: 1px solid #aaa; margin: 2.5rem 0; }

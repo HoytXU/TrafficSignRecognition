@@ -8,34 +8,28 @@ import MethodNotes from './components/MethodNotes'
 import Links from './components/Links'
 
 const NAV_ITEMS = [
-  { id: 'hero',       label: 'Overview' },
+  { id: 'hero',       label: 'Overview'   },
   { id: 'background', label: 'Background' },
-  { id: 'methods',    label: 'Methods' },
-  { id: 'comparison', label: 'Comparison' },
-  { id: 'gallery',    label: 'Gallery' },
-  { id: 'failures',   label: 'Failures' },
-  { id: 'notes',      label: 'Notes' },
-  { id: 'links',      label: 'Links' },
+  { id: 'methods',    label: 'Methods'    },
+  { id: 'comparison', label: 'Results'    },
+  { id: 'gallery',    label: 'Gallery'    },
+  { id: 'failures',   label: 'Failures'   },
+  { id: 'notes',      label: 'Notes'      },
+  { id: 'links',      label: 'References' },
 ]
 
 function Nav() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-700/60">
-      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-6 overflow-x-auto">
-        <span className="font-bold text-white whitespace-nowrap text-sm tracking-wide shrink-0">
-          Traffic Sign Recognition
-        </span>
-        <div className="flex gap-1">
-          {NAV_ITEMS.map(item => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className="px-3 py-1 rounded text-xs text-slate-400 hover:text-white hover:bg-slate-700 transition-colors whitespace-nowrap"
-            >
+    <nav className="sticky top-0 bg-white border-b border-gray-300 z-50 py-2">
+      <div className="max-w-3xl mx-auto px-6 flex flex-wrap gap-x-1 gap-y-1 text-sm overflow-x-auto">
+        {NAV_ITEMS.map((item, i) => (
+          <span key={item.id} className="flex items-center gap-1">
+            {i > 0 && <span className="text-gray-400 select-none">·</span>}
+            <a href={`#${item.id}`} className="no-underline hover:underline text-blue-800">
               {item.label}
             </a>
-          ))}
-        </div>
+          </span>
+        ))}
       </div>
     </nav>
   )
@@ -43,9 +37,9 @@ function Nav() {
 
 export default function App() {
   return (
-    <div className="bg-slate-900 text-slate-100 min-h-screen">
+    <div className="bg-white text-gray-900 min-h-screen">
       <Nav />
-      <main>
+      <main className="max-w-3xl mx-auto px-6">
         <Hero />
         <Background />
         <MethodPipeline />
@@ -55,7 +49,7 @@ export default function App() {
         <MethodNotes />
         <Links />
       </main>
-      <footer className="border-t border-slate-700 py-8 text-center text-slate-500 text-sm">
+      <footer className="max-w-3xl mx-auto px-6 py-8 text-xs text-gray-500 border-t border-gray-300 mt-4">
         NUS Summer Camp · Traffic Sign Recognition Project · Static portfolio — no live inference
       </footer>
     </div>

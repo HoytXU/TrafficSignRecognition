@@ -4,59 +4,48 @@ export default function FailureCases() {
   const base = import.meta.env.BASE_URL
 
   return (
-    <section id="failures" className="py-20 px-4 border-t border-slate-800">
-      <div className="max-w-5xl mx-auto">
-        <div className="flex items-start justify-between flex-wrap gap-4 mb-2">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Failure Cases</h2>
-            <p className="text-slate-500 text-sm mt-1">
-              Common patterns where traffic sign classifiers go wrong.
-            </p>
-          </div>
-          <span className="text-xs px-2 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 self-start mt-1">
-            Placeholder examples
-          </span>
-        </div>
+    <section id="failures">
+      <hr className="sec" />
+      <h2 className="text-lg font-bold mb-4">5. Failure Analysis</h2>
 
-        <p className="text-xs text-slate-600 mb-8">
-          These are illustrative failure modes constructed from class reference images. Images and misclassification labels are placeholders — they represent real failure patterns but do not come from saved test-set predictions.
-        </p>
+      <p className="text-sm leading-relaxed mb-2">
+        Even high-accuracy models fail on a predictable set of cases. The examples below illustrate
+        the most common failure modes, constructed from class reference images. Misclassification
+        labels and confidence scores are illustrative placeholders.
+      </p>
+      <p className="text-xs text-gray-500 italic mb-4">
+        Figure 5. Representative failure modes. All predictions are placeholder values.
+      </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {failureCases.map((fc, i) => (
-            <div key={i} className="bg-slate-800 rounded-xl border border-slate-700 p-4">
-              <div className="flex gap-4 items-start mb-3">
-                <img
-                  src={`${base}${fc.imagePath}`}
-                  alt="Failure case input"
-                  className="w-16 h-16 object-cover rounded-lg bg-slate-700 shrink-0"
-                />
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-1 mb-1">
-                    <span className="text-xs text-slate-500">Predicted</span>
-                    <span className="text-xs text-red-400 font-medium">{fc.predictedLabel}</span>
-                    <span className="text-xs text-slate-600">({(fc.confidence * 100).toFixed(0)}%)</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs text-slate-500">True</span>
-                    <span className="text-xs text-emerald-400 font-medium">{fc.trueLabel}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-1 mb-2">
-                <div className="w-full bg-slate-700 rounded-full h-1">
-                  <div
-                    className="bg-red-500 h-1 rounded-full"
-                    style={{ width: `${(fc.confidence * 100).toFixed(0)}%` }}
-                  />
-                </div>
-                <span className="text-xs text-red-400 shrink-0">{(fc.confidence * 100).toFixed(0)}%</span>
-              </div>
-              <p className="text-xs text-slate-400 leading-relaxed">{fc.reason}</p>
+      <div className="grid sm:grid-cols-2 gap-5 mb-4">
+        {failureCases.map((fc, i) => (
+          <div key={i} className="flex gap-4 border border-gray-300 p-3">
+            <img
+              src={`${base}${fc.imagePath}`}
+              alt="Input image"
+              className="w-16 h-16 object-cover border border-gray-300 bg-gray-100 shrink-0"
+            />
+            <div className="text-sm">
+              <p className="mb-1">
+                <span className="text-gray-500">Predicted: </span>
+                <strong className="text-red-700">{fc.predictedLabel}</strong>
+                <span className="text-gray-400 text-xs ml-1">({(fc.confidence * 100).toFixed(0)}%)</span>
+              </p>
+              <p className="mb-1">
+                <span className="text-gray-500">True label: </span>
+                <strong>{fc.trueLabel}</strong>
+              </p>
+              <p className="text-xs text-gray-600 leading-relaxed">{fc.reason}</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+
+      <p className="text-xs text-gray-500 italic">
+        To generate real failure cases: run inference on the GTSRB test set with a trained checkpoint
+        (<code>bonus/checkpoints/</code>), collect wrong predictions, and replace the placeholder data
+        in <code>src/data/projectData.ts</code>.
+      </p>
     </section>
   )
 }
