@@ -12,7 +12,7 @@ export default function Hero() {
         <span className="font-normal text-2xl">From Hand-Crafted Visual Features to Learned Representations</span>
       </h1>
 
-      <p className="text-sm text-gray-600 italic mt-2 mb-1">NUS Summer Camp — Final Project</p>
+      <p className="text-sm text-gray-600 italic mt-2 mb-1">INFH 5000 — Final Project</p>
 
       <hr className="sec" />
 

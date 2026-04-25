@@ -453,7 +453,7 @@ export const projectLinks: LinkGroup[] = [
       {
         label: 'Presentation Slides',
         url: 'https://github.com/HoytXU/TrafficSignRecongnition/blob/master/assets/slides/talk.pdf',
-        desc: 'Project overview, methodology, and results — NUS Summer Camp final presentation.',
+        desc: 'Project overview, methodology, and results — INFH 5000 final presentation.',
       },
     ],
   },

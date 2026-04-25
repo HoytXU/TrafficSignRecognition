@@ -50,7 +50,7 @@ export default function App() {
         <Links />
       </main>
       <footer className="max-w-3xl mx-auto px-6 py-8 text-xs text-gray-500 border-t border-gray-300 mt-4">
-        NUS Summer Camp · Traffic Sign Recognition Project · Static portfolio — no live inference
+        INFH 5000 · Traffic Sign Recognition Project · Static portfolio — no live inference
       </footer>
     </div>
   )
