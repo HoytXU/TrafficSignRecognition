@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Thin scrollbar for pipeline overflow on mobile */
+.pipeline-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.pipeline-scroll::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+.pipeline-scroll::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 2px;
+}
