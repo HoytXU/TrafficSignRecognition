@@ -7,7 +7,7 @@
     "prebuild": "bash scripts/copy-assets.sh",
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview --base /TrafficSignRecongnition/"
+    "preview": "vite preview --base /TrafficSignRecognition/"
   },
   "dependencies": {
     "react": "^18.3.1",
