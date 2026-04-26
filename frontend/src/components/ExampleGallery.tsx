@@ -32,12 +32,12 @@ function Modal({ item, onClose }: { item: GalleryItem; onClose: () => void }) {
           <thead><tr><th>Field</th><th>Value</th></tr></thead>
           <tbody>
             <tr><td>True label</td><td>{item.trueLabel}</td></tr>
-            <tr><td>Planned predicted label</td><td>{item.predictedLabel}</td></tr>
-            <tr><td>Planned confidence</td><td className="tabular-nums text-gray-500">{(item.confidence * 100).toFixed(1)}%</td></tr>
+            <tr><td>Predicted</td><td>{item.predictedLabel}</td></tr>
+            <tr><td>Confidence</td><td className="tabular-nums text-gray-500">{(item.confidence * 100).toFixed(1)}%</td></tr>
           </tbody>
         </table>
 
-        <p className="text-xs font-bold mb-1 text-gray-600">Planned top-5 UI format:</p>
+        <p className="text-xs font-bold mb-1 text-gray-600">top-5 predictions:</p>
         <ol className="text-xs list-decimal list-inside text-gray-500 space-y-0.5">
           {item.topFive.map((t, i) => (
             <li key={i}>
@@ -60,15 +60,16 @@ export default function ExampleGallery() {
   return (
     <section id="gallery">
       <hr className="sec" />
-      <h2 className="text-lg font-bold mb-4">4. Class Reference Gallery</h2>
+      <h2 className="text-lg font-bold mb-4">4. Example Gallery</h2>
 
       <p className="text-sm leading-relaxed mb-2">
-        The grid below shows one GTSRB Meta reference image for each of the 43 classes. These are
-        class reference images, not test samples and not model predictions. Click any image to inspect
-        the human-readable class label and the planned prediction UI format.
+        The grid below shows the GTSRB class reference image for each of the 43 classes (from the
+        dataset's <code>Meta/</code> directory). Click any image to view predicted class, confidence,
+        and top-5 predictions. <em>All predictions shown are placeholder values</em> — the trained
+        models were not deployed for this static page.
       </p>
       <p className="text-xs text-gray-500 italic mb-4">
-        Figure 4. GTSRB Meta class reference images (classes 0–42). Click to inspect.
+        Figure 4. GTSRB class reference images (classes 0–42). Click to inspect.
       </p>
 
       <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 gap-1.5 mb-3">

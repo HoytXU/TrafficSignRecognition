@@ -497,14 +497,4 @@ export const projectLinks: LinkGroup[] = [
       },
     ],
   },
-  {
-    category: 'Slides',
-    items: [
-      {
-        label: 'Presentation Slides',
-        url: 'https://github.com/HoytXU/TrafficSignRecognition/blob/master/assets/slides/talk.pdf',
-        desc: 'Project overview, methodology, and results — INFH 5000 final presentation.',
-      },
-    ],
-  },
 ];

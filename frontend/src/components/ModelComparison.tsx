@@ -90,7 +90,7 @@ export default function ModelComparison() {
       </div>
       <p className="text-xs text-gray-500 mb-6">
         Real metrics from <code>bonus/analysis/model_comparison_summary.json</code>, a 5-epoch
-        comparison run. README values such as ViT ~98.7% and AlexNet ~98.5% summarize approximate
+        comparison run. README values such as ViT ~98.7% and AlexNet ~98.5% summarize 
         best/longer-run results and are not mixed into this table.
       </p>
 
